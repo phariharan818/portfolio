@@ -11,7 +11,7 @@ source python3-virtualenv/bin/activate
 pip install -r requirements.txt
 
 tmux new-session -d -s flask-session 'python app.py'
-<<<<<<< HEAD
 
-=======
->>>>>>> 99e78784090c98c8d435ad410a36f8d84102e17d
+git reset origin/main --hard 
+
+flask run
