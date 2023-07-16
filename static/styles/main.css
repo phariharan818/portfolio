@@ -245,3 +245,53 @@ h1.text {
   width: 50%;
   margin-bottom: 6vh;
 }
+
+/* timeline */
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card-container-timeline {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-color {
+  background-color: rgb(186, 182, 182);
+}
+
+#timeline-form {
+  margin-bottom: 20px;
+}
+
+input.timeline-outline {
+  outline: 2px solid #1d539f;
+}
+
+#timeline-form input,
+#timeline-form textarea {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+}
+
+#timeline-form button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+#timeline-posts {
+  margin-top: 20px;
+}
+
+#timeline-posts div {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}

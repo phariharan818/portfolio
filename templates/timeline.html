@@ -1,0 +1,60 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+<div class="row mt-5 ml-3 mr-3">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Create Post</h5>
+          <p class="card-text">
+            <form id="timeline-form">
+                <input class="card-text" type="text" name="name" placeholder="Name" style="border: 2px solid black"; required>
+                <input class="card-text" type="email" name="email" placeholder="Email" style="border: 2px solid black"; required>
+                <textarea class="card-text" name="content" placeholder="Content" style="border: 2px solid black"; required></textarea>
+                <button type="submit">Create Post</button>
+            </form>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Timeline Posts</h5>
+          <p class="card-text">Posts will appear here as you add them!</p>
+          <div id="timeline-posts"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+    document.getElementById("timeline-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch("/api/timeline_post", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                var timelinePost = document.createElement("div");
+                timelinePost.innerHTML = `
+                    <h3>${data.name}</h3>
+                    <p>${data.email}</p>
+                    <p>${data.content}</p>
+                `;
+                document.getElementById("timeline-posts").prepend(timelinePost);
+                document.getElementById("timeline-form").reset();
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    });
+</script>
+
+{% endblock %}

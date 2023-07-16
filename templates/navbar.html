@@ -1,6 +1,5 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 <header class="nav-bar">
   <div class="nav-content">
     <div class="nav-collect"></div>
@@ -10,15 +9,18 @@
       <li><a href="/work">Work Experience</a></li>
       <li><a href="/hobbies">Hobbies</a></li>
       <li><a href="/map">Map</a></li>
+      <li><a href="/timeline">Timeline</a></li>
     </div>
   </div>
 </header>
 
-  <div class="background-image">
-    <div class="text-overlay">
-      <h1 class="text">{{ title }}</h1>
-    </div>
-      <img class="background-pic" src="{{url_for('static',filename='img/nature.jpg')}}" />
+{% if request.path == '/' %}
+<div class="background-image">
+  <div class="text-overlay">
+    <h1 class="text">{{ title }}</h1>
   </div>
-  
+  <img class="background-pic" src="{{ url_for('static', filename='img/nature.jpg') }}" />
+</div>
+{% endif %}
+
 </div>

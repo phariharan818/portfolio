@@ -8,11 +8,13 @@ from playhouse.shortcuts import model_to_dict
 load_dotenv()
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
-mydb=MySQLDatabase(os.getenv("MYSQL_DATABASE"),
-              user=os.getenv("MYSQL_USER"),
-              password=os.getenv("MYSQL_PASSWORD"),
-              host=os.getenv("MYSQL_HOST"),
-              port=3306)
+mydb = MySQLDatabase(
+    os.getenv("MYSQL_DATABASE"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    host=os.getenv("MYSQL_HOST"),
+    port=3306
+)
 
 print(mydb)
 
@@ -36,17 +38,13 @@ URL = os.getenv("URL")
 @app.route("/")
 @app.route("/index")
 def index():
-    # template = env.get_template("index.html")
-    """Our default routes of '/' and '/index'
-
-    Return: The content we want to display to a user
-    """
-    # print(template.render(the="variables", go="here"))
     return render_template("index.html", title=NAMES, url=URL)
+
 
 @app.route("/education")
 def education():
     return render_template("education.html", title=NAMES, url=URL)
+
 
 @app.route("/map")
 def map():
@@ -66,8 +64,8 @@ def hobbies():
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
     name = request.form['name']
-    email =  request.form['email']
-    content =  request.form['content']
+    email = request.form['email']
+    content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
     return model_to_dict(timeline_post)
@@ -78,22 +76,17 @@ def get_time_line_post():
     return {
         'timeline_posts': [
             model_to_dict(p)
-            for p in
-TimelinePost.select().order_by(TimelinePost.created_at.desc())
+            for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
 
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title='Timeline')
+
+
 @app.route("/<path:path>")
 def catch_all(path):
-    """A special route that catches all other requests
-
-    Note: Let this be your last route. Priority is defined
-    by order, so placing this above other functions will
-    cause catch_all() to override then.
-
-    Return: A redirect to our index route
-    """
-
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
