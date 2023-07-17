@@ -1,27 +1,26 @@
 {% extends "template.html" %} {% block content %}
-<div class="card about-container">
-  <div class="about-me">
-    <h1 class="about-title">About Priya</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
-      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-    </p>
-  </div>
-</div>
-
-<div class="card about-container">
-  <div class="about-me">
-    <h1 class="about-title">About Joel</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
-      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-    </p>
+<div class="card-deck mr-2 ml-2">
+  <div class="card about-container mx-auto">
+    <div class="about-me d-flex">
+      <div>
+        <h1 class="about-title">About Me</h1>
+        <p class="about-text">
+          Hi! My name is Priya Hariharan and I am pursuing an Informatics degree at the University of Washington, Seattle.
+        </p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/priya-hariharan-2834271b7/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/phariha/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://drive.google.com/file/d/1_Iqg5rL5iGclxlzvS-MrRnfGXOStK_qt/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-file-alt fa-3x"></i>
+          </a>
+        </div>
+      </div>
+      <img class="priya-pic" src="{{ url_for('static', filename='img/priya.jpg') }}" />
+    </div>
   </div>
 </div>
 

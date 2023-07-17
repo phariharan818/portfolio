@@ -113,12 +113,12 @@ li a:hover {
 
 .background-pic {
   width: 100%;
-  max-height: 50%;
+  height: 500px;
 }
 
 .text-overlay {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -157,6 +157,8 @@ h1.text {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 0;
+  max-width: 1000px;
 }
 
 .nav-center {
@@ -170,10 +172,45 @@ h1.text {
   text-align: center;
 }
 
+.about-text {
+  width: 90%;
+  margin-left: 1em;
+}
+
 .about-me {
   color: black;
   font-size: 20px;
 }
+
+.priya-pic {
+  max-width: 250px;
+  max-height: 450px;
+  border-radius: 50%;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 3em;
+  font-size: 24px;
+}
+
+.social-icons i {
+  color: #000;
+  font-size: 35px;
+}
+
+.social-icons a:hover i {
+  color: #007bff;
+}
+
 
 /* Work Experience */
 
