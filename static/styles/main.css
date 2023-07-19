@@ -183,16 +183,17 @@ h1.text {
 }
 
 .priya-pic {
-  max-width: 250px;
-  max-height: 450px;
+  max-width: 300px;
+  max-height: 350px;
   border-radius: 50%;
 }
 
 .social-icons {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 1em;
+  margin-left: 1.3em;
 }
 
 .social-icons a {
@@ -208,7 +209,11 @@ h1.text {
 }
 
 .social-icons a:hover i {
-  color: #007bff;
+  color: #1d539f;
+}
+
+.programming-languages {
+  font-size: 35px;
 }
 
 
@@ -236,6 +241,8 @@ h1.text {
 .work-title {
   text-align: center;
 }
+
+
 
 /* Hobbies */
 .hobby-title {
