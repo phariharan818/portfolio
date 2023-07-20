@@ -38,7 +38,7 @@ class TetTimelinePost(unittest.TestCase):
         )
         assert second_post.id == 2
 
-        # # Check that the posts were created correctl
+        # # Check that the posts were created correctly
         assert TimelinePost.select().count() == 2
         assert TimelinePost.select().where(TimelinePost.name == "John Doe").count() == 1
         assert TimelinePost.select().where(TimelinePost.name == "Jane Doe").count() == 1
