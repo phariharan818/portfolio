@@ -34,7 +34,7 @@
     />
     <link
       rel="icon"
-      href="{{url_for('static',filename='img/mlh.ico')}}"
+      href="{{url_for('static',filename='img/portfolio-icon.ico')}}"
       type="image/x-icon"
     />
     <link
@@ -58,7 +58,7 @@
     {% include 'navbar.html' %} {% block content %}{% endblock %}
   </body>
   <div class="card-container">
-    <div id="map"></div>
+    <div class="mt-4" id="map"></div>
   </div>
   <script>
     var map = L.map("map").setView([37.8, -96], 4);
@@ -73,26 +73,14 @@
 
     function getColor(v) {
       switch (v) {
-        case 1: // both visited
-          return "#ababcc";
-        case 2: // joel
-          return "#8da6ba";
-        case 3: // priya
+        case 1: // priya
           return "#a2c999";
-        default: // neither
-          return "#e8e8e8";
       }
     }
     function getLabel(v) {
       switch (v) {
-        case 1: // both visited
-          return "Both";
-        case 2: // joel
-          return "Joel";
-        case 3: // priya
-          return "Priya";
-        default: // neither
-          return "Neither";
+        case 1: // priya
+          return "Visited States";
       }
     }
 
@@ -151,7 +139,7 @@
 
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-      this._div.innerHTML = "<h4>Visited States</h4>";
+      this._div.innerHTML = "<h4>Map of the United States</h4>";
     };
 
     info.addTo(map);
@@ -160,7 +148,7 @@
 
     legend.onAdd = function (map) {
       var div = L.DomUtil.create("div", "info legend"),
-        grades = [1, 2, 3];
+        grades = [1];
 
       // loop through our density intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {

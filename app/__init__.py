@@ -65,14 +65,25 @@ def hobbies():
     return render_template("hobbies.html", title=NAMES, url=URL)
 
 
-@app.route('/api/timeline_post', methods=['POST'])
+@app.route("/timeline", methods=["POST"])
 def post_time_line_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
+    print("Received POST request")
+    name = request.form.get("name")
+    email = request.form.get("email")
+    content = request.form.get("content")
+    print(f"Form Data - name: {name}, email: {email}, content: {content}")
 
-    return model_to_dict(timeline_post)
+    if not all([name, email, content]):
+        print("Invalid form data")
+        return redirect(url_for("timeline"))
+
+    try:
+        timeline_post = TimelinePost.create(name=name, email=email, content=content)
+        print("Post created successfully:", timeline_post)
+    except Exception as e:
+        print("Error creating post:", e)
+
+    return redirect(url_for("timeline"))
 
 
 @app.route('/api/timeline_post', methods=['GET'])
@@ -84,9 +95,29 @@ def get_time_line_post():
         ]
     }
 
-@app.route('/timeline')
+@app.route("/delete_post", methods=["POST"])
+def delete_post():
+    post_id = request.form.get("post_id")
+    try:
+        post = TimelinePost.get_by_id(post_id)
+        post.delete_instance()
+    except TimelinePost.DoesNotExist:
+        return {"error": "Post does not exist"}, 404
+
+    return redirect(url_for("timeline"))
+
+@app.route("/timeline", methods=["GET"])
 def timeline():
-    return render_template('timeline.html', title='Timeline')
+    posts = [p for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+
+    return (
+        render_template(
+            "timeline.html",
+            title="Timeline",
+            posts=posts,
+            url=URL,
+        )
+    )
 
 
 @app.route("/<path:path>")

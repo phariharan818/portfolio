@@ -234,15 +234,13 @@ h1.text {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
-.card h3 {
+.card-header {
   text-align: center;
 }
 
 .work-title {
   text-align: center;
 }
-
-
 
 /* Hobbies */
 .hobby-title {
@@ -291,6 +289,11 @@ h1.text {
 }
 
 /* timeline */
+
+.timeline-p {
+  font-size: 24px;
+}
+
 h1 {
   color: #333;
   font-size: 24px;
@@ -312,6 +315,10 @@ h1 {
 
 input.timeline-outline {
   outline: 2px solid #1d539f;
+}
+
+.timeline-form-inputs button {
+  margin-top: 1em;
 }
 
 #timeline-form input,
@@ -338,4 +345,12 @@ input.timeline-outline {
   margin-bottom: 10px;
   border: 1px solid #ddd;
   padding: 10px;
+}
+
+.vertical-line {
+  /* border-left: 2px solid #ddd;
+  height: 100%;
+  margin: 0 1rem; */
+  border-left: 4px solid #ddd;
+  height: 500px;
 }
