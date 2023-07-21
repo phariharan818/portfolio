@@ -1,3 +1,3 @@
 #!/bin/bash
 
-$PWD/venv/bin/python -m unittest discover -v tests/
+$PWD/python3-virtualenv/bin/python -m unittest discover -v tests/

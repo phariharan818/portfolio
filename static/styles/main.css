@@ -219,10 +219,22 @@ h1.text {
 
 /* Work Experience */
 
+.btn-work {
+  font-size: 25px;
+}
+
+.btn-work:hover {
+  color: #1d539f;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.accordian .card-header {
+  background-color: white;
 }
 
 .card {
