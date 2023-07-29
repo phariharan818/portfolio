@@ -24,5 +24,20 @@ services:
     volumes:
       - mydatabase:/var/lib/mysql
 
+  nginx:
+    container_image: nginx 
+    image: jonasal/nginx-certbot
+    restart: always
+    environment: CERTBOT_EMAIL=name@example.com
+    ports:
+      - 80:80
+      - 443:433
+    volumes:
+      - nginx_secrets:/etc/letsencrypt
+      - ./user/conf.d:/etc/nginx/user_conf.d
+    depends_on:
+      - myportfolio
+
 volumes:
   mydatabase:
+  nginx_secrets:
