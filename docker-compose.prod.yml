@@ -4,12 +4,12 @@ services:
     container_name: myportfolio
     build: .
     restart: always
-    env_file:
+    env_file: 
       - .env
     depends_on:
       - mysql
 
-  mysql:
+  mysql:            
     container_name: mysql
     image: mariadb
     restart: always
@@ -19,7 +19,7 @@ services:
       - mydatabase:/var/lib/mysql
 
   nginx:
-    container_image: nginx
+    container_image: nginx 
     image: jonasal/nginx-certbot
     restart: always
     environment: CERTBOT_EMAIL=name@example.com
