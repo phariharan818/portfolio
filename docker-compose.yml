@@ -5,18 +5,16 @@ services:
     build: .
     restart: always
     env_file:
-      - .env
-    ports:
-      - "5000:5000"
+      - .env 
     depends_on:
       - mysql
 
   mysql:
-    container_name: mysql
+    container_name: mysql 
     image: mariadb
-    restart: always
+    restart: always 
     env_file:
-      - .env
+      - .env 
     volumes:
       - mydatabase:/var/lib/mysql
 

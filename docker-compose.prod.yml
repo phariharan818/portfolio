@@ -5,18 +5,16 @@ services:
     build: .
     restart: always
     env_file:
-      - .env
-    ports:
-      - "5000:5000"
+      - .env 
     depends_on:
       - mysql
 
   mysql:
-    container_name: mysql
+    container_name: mysql 
     image: mariadb
-    restart: always
+    restart: always 
     env_file:
-      - .env
+      - .env 
     volumes:
       - mydatabase:/var/lib/mysql
 
@@ -25,13 +23,13 @@ services:
     image: jonasal/nginx-certbot
     restart: always
     environment:
-      CERTBOT_EMAIL: name@example.com
+      - CERTBOT_EMAIL=email
     ports:
       - 80:80
       - 443:443
     volumes:
       - nginx_secrets:/etc/letsencrypt
-      - ./user_conf.d:/etc/nginx/user_conf.d
+      - ./user_conf.d:/etc/nginx/user_conf.d 
     depends_on:
       - myportfolio
 
