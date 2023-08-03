@@ -49,7 +49,6 @@ def index():
 def education():
     return render_template("education.html", title=NAMES, url=URL)
 
-
 @app.route("/map")
 def map():
     return render_template("map.html", title=NAMES, url=URL)
@@ -99,7 +98,6 @@ def post_time_line_post():
     if not all([name, email, content]):
         print("Invalid form data")
         return redirect(url_for("timeline"))
-
     try:
         timeline_post = TimelinePost.create(name=name, email=email, content=content)
         print("Post created successfully:", timeline_post)
