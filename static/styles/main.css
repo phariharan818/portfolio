@@ -11,7 +11,6 @@ button {
 
 body {
   background-color: #f5f5f9;
-  /* background-color: #F9F6F0; */
   background-size: cover;
   width: auto;
   overflow-x: hidden;
@@ -23,7 +22,7 @@ body {
   width: 100%;
   display: inline-block;
   background-color: #1c539f;
-  /* background-color: #C4AE78; */
+  /* background-color: #FBFAF5; */
   font-family: "Roboto", serif;
   font-weight: 700 !important;
   padding-top: 10px;
@@ -218,6 +217,66 @@ h1.text {
   font-size: 35px;
 }
 
+/* Projects */
+
+.card-project:hover {
+  transform: scale(1.06);
+}
+
+.card-project {
+  margin-top: 4em;
+  margin-left: 4em;
+  transition: transform 0.5s;
+}
+
+.card-project img {
+  align-items: center;
+}
+
+.card-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+/* Project Details */
+
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.slideshow-image {
+  display: none;
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: #1c539f;
+}
 
 /* Work Experience */
 
@@ -271,6 +330,8 @@ h1.text {
   width: 500px;
 }
 
+/* Map */
+
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
@@ -302,7 +363,7 @@ h1.text {
   margin-bottom: 6vh;
 }
 
-/* timeline */
+/* Timeline */
 
 .timeline-p {
   font-size: 24px;
