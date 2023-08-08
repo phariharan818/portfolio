@@ -1,27 +1,49 @@
 {% extends "template.html" %} {% block content %}
-<div class="card about-container">
-  <div class="about-me">
-    <h1 class="about-title">About Priya</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
-      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-    </p>
+<div class="card-deck mt-2 mr-2 ml-2">
+  <div class="card about-container mx-auto">
+    <div class="about-me d-flex">
+      <div>
+        <h1 class="about-title">About Me</h1>
+        <p class="about-text mt-4">
+          Hi! My name is Priya Hariharan and I am majoring in Informatics at the University of Washington, Seattle with a focus area in Software Engineering and Development.
+          I am passionate about creating innovative and user-friendly software solutions that people can depend on. Through my coursework and projects, I have gained experience in various programming languages and I enjoy collaborating with others.
+
+        </p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/priya-hariharan-2834271b7/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin mr-2"></i>
+          </a>
+          <a href="https://github.com/phariharan818?tab=overview&from=2023-07-01&to=2023-07-31/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github mr-2"></i>
+          </a>
+          <a href="https://drive.google.com/file/d/1_Iqg5rL5iGclxlzvS-MrRnfGXOStK_qt/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-file-alt fa-3x mr-2"></i>
+          </a>
+        </div>
+      </div>
+      <img class="priya-pic" src="{{ url_for('static', filename='img/priya.jpg') }}" />
+    </div>
   </div>
 </div>
-
-<div class="card about-container">
-  <div class="about-me">
-    <h1 class="about-title">About Joel</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-      nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-      aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-      vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam
-      velit. Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-    </p>
+<div class="card-deck mr-2 ml-2">
+  <div class="card about-container mx-auto">
+    <div class="about-me d-flex">
+      <div>
+        <h1 class="about-title">Programming Languages</h1>
+        <div class="programming-languages">
+          <i class="fab fa-java m-3" title="Java"></i>
+          <i class="fab fa-python m-3" title="Python"></i>
+          <i class="fab fa-html5 m-3" title="HTML"></i>
+          <i class="fab fa-css3-alt m-3" title="CSS"></i>
+          <i class="fab fa-react m-3" title="ReactJS"></i>
+          <i class="fab fa-js m-3" title="JavaScript"></i>
+          <i class="fab fa-r-project m-3" title="R"></i>
+          <i class="fas fa-database m-3" title="SQL"></i>
+          <i class="fab fa-git m-3" title="Git"></i>
+          <i class="fab fa-ajax m-3" title="Ajax"></i>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

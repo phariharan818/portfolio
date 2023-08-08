@@ -22,9 +22,11 @@ body {
   width: 100%;
   display: inline-block;
   background-color: #1c539f;
+  /* background-color: #FBFAF5; */
   font-family: "Roboto", serif;
   font-weight: 700 !important;
   padding-top: 10px;
+  padding: 0.5em;
 }
 
 .nav-content .logo-touch-target {
@@ -91,40 +93,42 @@ li a:hover {
   color: white;
 }
 
-.profile {
-  background-color: #1d539f !important;
-  text-align: center;
-  height: 320px;
-  margin-bottom: 50px;
-  align-items: center;
-  justify-content: center;
-}
-
 .profile-line {
   display: flex;
   height: 320px;
   width: 300px;
 }
 
-.profile h1 {
-  font-size: 50px;
-  font-weight: 700;
+.home-body {
+  margin-top: 0;
+  height: 100vh;
+}
+
+.container-fluid {
+  height: 100vh;
+}
+
+.background-image {
+  width: 100%;
+}
+
+.background-pic {
+  width: 100%;
+  height: 500px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+h1.text {
+  font-size: 80px;
   color: white;
-}
-
-.profile img {
-  border-radius: 90%;
-  max-height: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-}
-
-.profile .profile-picture {
-  margin-bottom: 30px;
-  height: 200px;
 }
 
 .banner {
@@ -154,6 +158,8 @@ li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 0;
+  max-width: 1000px;
 }
 
 .nav-center {
@@ -167,17 +173,129 @@ li a:hover {
   text-align: center;
 }
 
+.about-text {
+  width: 90%;
+  margin-left: 1em;
+}
+
 .about-me {
   color: black;
   font-size: 20px;
 }
 
+.priya-pic {
+  max-width: 300px;
+  max-height: 350px;
+  border-radius: 50%;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 1em;
+  margin-left: 1.3em;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 3em;
+  font-size: 24px;
+}
+
+.social-icons i {
+  color: #000;
+  font-size: 35px;
+}
+
+.social-icons a:hover i {
+  color: #1d539f;
+}
+
+.programming-languages {
+  font-size: 35px;
+}
+
+/* Projects */
+
+.card-project:hover {
+  transform: scale(1.06);
+}
+
+.card-project {
+  margin-top: 4em;
+  margin-left: 4em;
+  transition: transform 0.5s;
+}
+
+.card-project img {
+  align-items: center;
+}
+
+.card-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+/* Project Details */
+
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.slideshow-image {
+  display: none;
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: #1c539f;
+}
+
 /* Work Experience */
+
+.btn-work {
+  font-size: 25px;
+}
+
+.btn-work:hover {
+  color: #1d539f;
+}
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.accordian .card-header {
+  background-color: white;
 }
 
 .card {
@@ -189,7 +307,7 @@ li a:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
-.card h3 {
+.card-header {
   text-align: center;
 }
 
@@ -211,6 +329,8 @@ li a:hover {
   flex-basis: 180px;
   width: 500px;
 }
+
+/* Map */
 
 .info {
   padding: 6px 8px;
@@ -241,4 +361,71 @@ li a:hover {
   height: 60vh;
   width: 50%;
   margin-bottom: 6vh;
+}
+
+/* Timeline */
+
+.timeline-p {
+  font-size: 24px;
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card-container-timeline {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-color {
+  background-color: rgb(186, 182, 182);
+}
+
+#timeline-form {
+  margin-bottom: 20px;
+}
+
+input.timeline-outline {
+  outline: 2px solid #1d539f;
+}
+
+.timeline-form-inputs button {
+  margin-top: 1em;
+}
+
+#timeline-form input,
+#timeline-form textarea {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+}
+
+#timeline-form button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+#timeline-posts {
+  margin-top: 20px;
+}
+
+#timeline-posts div {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.vertical-line {
+  /* border-left: 2px solid #ddd;
+  height: 100%;
+  margin: 0 1rem; */
+  border-left: 4px solid #ddd;
+  height: 500px;
 }

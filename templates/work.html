@@ -1,58 +1,68 @@
 {% extends "template.html" %} {% block content %}
 
-<div class="card">
-  <h1 class="work-title">Priya Work Experience</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-    nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-    aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-    vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam velit.
-    Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-  </p>
+<div id="accordion">
+  <div class="card card-work mt-4 ml-5 mr-5">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-work font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+          aria-controls="collapseOne">
+          MLH Production Engineering Fellow
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body" style="font-size: 20px;">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+        officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+        butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+        haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card mt-4 ml-5 mr-5">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn collapsed btn-work font-weight-bold" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+          aria-controls="collapseTwo">
+          Work Experience #2
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body" style="font-size: 20px;">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+        officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+        butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+        haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card mt-4 ml-5 mr-5">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn collapsed btn-work font-weight-bold" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+          aria-controls="collapseThree">
+          Work Experience #3
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body" style="font-size: 20px;">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+        officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+        butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+        haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <!-- <img src="{{ url_for('static', filename='img/priya-resume.png') }}" alt="My Resume"> -->
 </div>
 
-<div class="card-container">
-  <div class="card">
-    <h3>Work Experience 1</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
-    </p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 2</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 3</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-</div>
-
-<div class="card card-title">
-  <h1 class="work-title">Joel Work Experience</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut semper
-    nunc. Fusce congue, quam id porttitor rutrum, justo risus luctus purus, id
-    aliquam mauris felis nec justo. Phasellus tincidunt purus in ex fermentum
-    vulputate. Mauris non turpis vestibulum, congue tellus eget, aliquam velit.
-    Nulla vel convallis purus. Nam sollicitudin eu est eu laoreet.
-  </p>
-</div>
-
-<div class="card-container">
-  <div class="card">
-    <h3>Work Experience 1</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.
-    </p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 2</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-  <div class="card">
-    <h3>Work Experience 3</h3>
-    <p>Doloremque commodi unde eaque! Et natus dolorum corrupti ut numquam.</p>
-  </div>
-</div>
-{% endblock %} ```
+{% endblock %}
