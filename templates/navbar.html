@@ -1,24 +1,27 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <header class="nav-bar">
-  <div class="nav-content">
-    <div class="nav-collect"></div>
-    <div class="nav-items">
-      <li><a href="/">Home</a></li>
-      <li><a href="/project">Projects</a></li>
-      <li><a href="/work">Work Experience</a></li>
-      <li><a href="/hobbies">Hobbies</a></li>
-      <li><a href="/map">Map</a></li>
-      <li><a href="/timeline">Timeline</a></li>
+    <div class="nav-content">
+      <div class="nav-collect">
+        <div class="nav-logo">
+          <a href="/"><img src="{{url_for('static',filename='img/logo.svg')}}" /></a>
+        </div>
+      </div>
+      <div class="nav-items">
+        <li><a href="/">Home</a></li>
+        <li><a href="/education">Education</a></li>
+        <li><a href="/work">Work Experience</a></li>
+        <li><a href="/hobbies">Hobbies</a></li>
+        <li><a href="/map">Map</a></li>
+      </div>
+        </div>
     </div>
-  </div>
 </header>
 
-{% if request.path == '/' %}
-<div class="background-image">
-  <div class="text-overlay ml-4">
-    <h1 class="text">Priya's Portfolio</h1>
+  <div class="profile">
+    <div id="profile-picture" class="profile-picture md:pt-5 pt-24 md:pr-32 pr-44 nav-center">
+      <div class="profile-line">
+        <img src="{{url_for('static',filename='img/priya.jpg')}}" />
+        <img src="{{url_for('static',filename='img/joel.jpg')}}" />
+    </div>
   </div>
-  <img class="background-pic" src="{{ url_for('static', filename='img/nature.jpg') }}" />
-</div>
-{% endif %}
+    <h1>{{ title }}</h1>
+  </div>

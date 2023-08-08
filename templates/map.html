@@ -16,6 +16,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
 
     <link
       rel="stylesheet"
@@ -30,7 +34,7 @@
     />
     <link
       rel="icon"
-      href="{{url_for('static',filename='img/portfolio-icon.ico')}}"
+      href="{{url_for('static',filename='img/mlh.ico')}}"
       type="image/x-icon"
     />
     <link
@@ -54,7 +58,7 @@
     {% include 'navbar.html' %} {% block content %}{% endblock %}
   </body>
   <div class="card-container">
-    <div class="mt-4" id="map"></div>
+    <div id="map"></div>
   </div>
   <script>
     var map = L.map("map").setView([37.8, -96], 4);
@@ -69,14 +73,26 @@
 
     function getColor(v) {
       switch (v) {
-        case 1: // priya
+        case 1: // both visited
+          return "#ababcc";
+        case 2: // joel
+          return "#8da6ba";
+        case 3: // priya
           return "#a2c999";
+        default: // neither
+          return "#e8e8e8";
       }
     }
     function getLabel(v) {
       switch (v) {
-        case 1: // priya
-          return "Visited States";
+        case 1: // both visited
+          return "Both";
+        case 2: // joel
+          return "Joel";
+        case 3: // priya
+          return "Priya";
+        default: // neither
+          return "Neither";
       }
     }
 
@@ -135,7 +151,7 @@
 
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-      this._div.innerHTML = "<h4>Map of the United States</h4>";
+      this._div.innerHTML = "<h4>Visited States</h4>";
     };
 
     info.addTo(map);
@@ -144,7 +160,7 @@
 
     legend.onAdd = function (map) {
       var div = L.DomUtil.create("div", "info legend"),
-        grades = [1];
+        grades = [1, 2, 3];
 
       // loop through our density intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
