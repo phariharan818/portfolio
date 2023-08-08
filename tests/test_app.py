@@ -16,7 +16,6 @@ class AppTestCase(unittest.TestCase):
         html = response.get_data(as_text=True)
         assert "<title>Priya Hariharan</title>" in html
         assert "Hi! My name is Priya Hariharan" in html
-        # assert '<a href="https://github.com/phariharan818/"' in html
 
     def test_timeline(self):
         response = self.client.get("/api/timeline_post")
