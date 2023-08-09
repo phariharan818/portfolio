@@ -6,7 +6,12 @@ h4,
 h5,
 h6,
 button {
-  font-family: "Roboto", serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -19,11 +24,11 @@ body {
 }
 
 .nav-bar {
+  font-family: 'Poppins', sans-serif;
   width: 100%;
   display: inline-block;
-  background-color: #1c539f;
-  /* background-color: #FBFAF5; */
-  font-family: "Roboto", serif;
+  /* background-color: #1c539f; */
+  background-color: #212529;
   font-weight: 700 !important;
   padding-top: 10px;
   padding: 0.5em;
@@ -109,12 +114,53 @@ li a:hover {
 }
 
 .background-image {
+  position: relative;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background-color: #212529;
+  opacity: 0.5;
+}
+
+.scroll-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.scroll-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  color: white;
+  animation: fadeInText 2s;
+  white-space: nowrap;  
 }
 
 .background-pic {
-  width: 100%;
-  height: 500px;
+  max-width: 100%;
+  height: auto;
 }
 
 .text-overlay {
@@ -124,30 +170,6 @@ li a:hover {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1;
-}
-
-h1.text {
-  font-size: 80px;
-  color: white;
-}
-
-.banner {
-  padding: 20px 0px 50px 0px;
-  height: 150px;
-  background-color: #1d539f;
-}
-
-.banner .logo {
-  max-width: 180px;
-  max-height: 60px;
-  width: auto;
-  height: auto;
-}
-
-.banner .title {
-  color: white;
-  font-size: 50px;
-  font-weight: 700;
 }
 
 /* About Me */
@@ -168,25 +190,76 @@ h1.text {
   align-items: center;
 }
 
+.arrow-container {
+  display: flex;
+  justify-content: center;
+}
+
+.arrow-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  color: #212529;
+}
+
+.arrow-link:hover {
+  font-weight: bold;
+}
+
+.arrow-down {
+  font-size: 70px;
+}
+
+.arrow-down:hover {
+  color: #212529;
+  text-decoration: none;
+}
+
+.hello-text {
+  font-size: 80px;
+  text-align: center;
+  padding-top: 2.5em;
+  animation: fadeInText 2s;
+}
+
+.hello-description {
+  font-size: 35px;
+  text-align: center;
+  padding-bottom: 1em;
+  width: 80%;
+  margin-left: 4em;
+  animation: fadeInText 2s;
+}
+
 .about-title {
   color: black;
   text-align: center;
+  margin-bottom: 0.5em;
+  font-size: 60px;
 }
 
 .about-text {
   width: 90%;
+  text-align: left;
+  font-size: 25px;
   margin-left: 1em;
 }
 
 .about-me {
   color: black;
   font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .priya-pic {
   max-width: 300px;
-  max-height: 350px;
-  border-radius: 50%;
+  max-height: 450px;
+  margin-left: 2em;
+  margin-bottom: 3em;
 }
 
 .social-icons {
@@ -262,20 +335,45 @@ h1.text {
   width: auto;
   padding: 16px;
   margin-top: -22px;
-  color: white;
   font-weight: bold;
   font-size: 18px;
-  transition: 0.6s ease;
+  transition: 0.3s ease;
   border-radius: 0 3px 3px 0;
+  background-color: #39275B;
+}
+
+.prev:hover, .next:hover {
+  background-color: #39275B;
 }
 
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
+.navigation-buttons {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  box-shadow: none;
+}
 
-.prev:hover, .next:hover {
-  background-color: #1c539f;
+.navigation-buttons .btn {
+  flex: 0 0 40%;
+  max-width: 150px;
+  color: #212529;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px;
+  transition: background-color 0.3s, color 0.3s;
+  color: white;
+}
+
+.navigation-buttons .btn:hover {
+  color: #000;
 }
 
 /* Work Experience */
@@ -285,7 +383,7 @@ h1.text {
 }
 
 .btn-work:hover {
-  color: #1d539f;
+  color: #39275B;
 }
 
 .card-container {
@@ -300,6 +398,7 @@ h1.text {
 
 .card {
   flex: 300px 300px;
+  font-family: 'Poppins', sans-serif;
   margin: 1rem;
   padding: 3em;
   background-color: white;
@@ -315,12 +414,41 @@ h1.text {
   text-align: center;
 }
 
+.btn-work {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+}
+
+.btn-work strong {
+  margin-right: auto;
+}
+
+.btn-work .sub-info {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.btn-work ul {
+  margin-left: auto;
+}
+
 /* Hobbies */
+
+.centered-img {
+  display: block;
+  margin: 0 auto;
+}
+
 .hobby-title {
   margin: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 40px;
 }
 
 .card img {
@@ -330,11 +458,25 @@ h1.text {
   width: 500px;
 }
 
+.card-text-container {
+  max-height: 150px; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+
+
 /* Map */
+
+.map-title {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 1em;
+  font: 'Poppins', sans-serif;
+}
 
 .info {
   padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
+  font: 14px/16px 'Poppins', sans-serif;
   background: white;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -422,10 +564,29 @@ input.timeline-outline {
   padding: 10px;
 }
 
-.vertical-line {
-  /* border-left: 2px solid #ddd;
-  height: 100%;
-  margin: 0 1rem; */
-  border-left: 4px solid #ddd;
-  height: 500px;
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .nav-collect::before {
+    content: "\2630";
+    font-size: 24px;
+    cursor: pointer;
+    display: block;
+    margin-right: 15px;
+  }
+
+  .nav-items {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .nav-content.active .nav-items {
+    display: block; /* Show navigation items when menu is active */
+  }
 }

@@ -1,14 +1,21 @@
 {% extends "template.html" %} {% block content %}
-<div class="card-deck mt-2 mr-2 ml-2">
+<div>
+  <h1 class="hello-text">Hey, I'm Priya Hariharan!</h1>
+  <p class="hello-description">An aspiring <strong>full-stack</strong> developer with a passion for creating projects that people depend on.</p>
+</div>
+<div class="arrow-container" style="margin-bottom: -1em;">
+  <a href="#about" class="arrow-link" style="text-decoration: none; font-weight: normal;">
+    <span class="arrow-down mb-4">&#x2193;</span>
+  </a>
+</div>
+<div id="about" class="card-deck mt-4 mr-2 ml-2">
   <div class="card about-container mx-auto">
     <div class="about-me d-flex">
       <div>
-        <h1 class="about-title">About Me</h1>
+        <h1 class="about-title"><strong>About Me</strong></h1>
         <p class="about-text mt-4">
-          Hi! My name is Priya Hariharan and I am majoring in Informatics at the University of Washington, Seattle with a focus area in Software Engineering and Development.
-          I am passionate about creating innovative and user-friendly software solutions that people can depend on. Through my coursework and projects, I have gained experience in various programming languages and I enjoy collaborating with others.
-
-        </p>
+          I am currently a senior majoring in <strong><a href="https://ischool.uw.edu/programs/informatics/focus-areas" target="_blank" style="color: #39275B;">Informatics</a></strong> at the University of Washington, Seattle with a focus area in Software Engineering and Development.</p>
+          <p class="about-text mt-4">I am passionate about creating innovative and user-friendly software solutions that people can depend on. Through my coursework and projects, I have gained experience in various programming languages and I enjoy collaborating with others.</p>
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/priya-hariharan-2834271b7/" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-linkedin mr-2"></i>
@@ -21,15 +28,17 @@
           </a>
         </div>
       </div>
-      <img class="priya-pic" src="{{ url_for('static', filename='img/priya.jpg') }}" />
+      <div class="container">
+        <img class="priya-pic" src="{{ url_for('static', filename='img/priya.jpg') }}" />
+      </div>
     </div>
   </div>
 </div>
-<div class="card-deck mr-2 ml-2">
+<div class="pt-3 mr-2 ml-2 mb-3">
   <div class="card about-container mx-auto">
     <div class="about-me d-flex">
       <div>
-        <h1 class="about-title">Programming Languages</h1>
+        <h2 class="mb-3 p-3" style="text-align: center;">Programming Languages</h2>
         <div class="programming-languages">
           <i class="fab fa-java m-3" title="Java"></i>
           <i class="fab fa-python m-3" title="Python"></i>
