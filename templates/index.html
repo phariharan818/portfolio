@@ -1,59 +1,201 @@
 {% extends "template.html" %} {% block content %}
+
+
 <div>
   <h1 class="hello-text">Hey, I'm Priya Hariharan!</h1>
-  <p class="hello-description">An aspiring <strong>full-stack</strong> developer with a passion for creating projects that people depend on.</p>
+  <p class="hello-description">An aspiring <span style="font-weight: bold;">full-stack</span> developer with a passion
+    for creating projects that people depend on.</p>
 </div>
 <div class="arrow-container" style="margin-bottom: -1em;">
   <a href="#about" class="arrow-link" style="text-decoration: none; font-weight: normal;">
     <span class="arrow-down mb-4">&#x2193;</span>
   </a>
 </div>
-<div id="about" class="card-deck mt-4 mr-2 ml-2">
-  <div class="card about-container mx-auto">
-    <div class="about-me d-flex">
-      <div>
-        <h1 class="about-title"><strong>About Me</strong></h1>
-        <p class="about-text mt-4">
-          I am currently a senior majoring in <strong><a href="https://ischool.uw.edu/programs/informatics/focus-areas" target="_blank" style="color: #39275B;">Informatics</a></strong> at the University of Washington, Seattle with a focus area in Software Engineering and Development.</p>
-          <p class="about-text mt-4">I am passionate about creating innovative and user-friendly software solutions that people can depend on. Through my coursework and projects, I have gained experience in various programming languages and I enjoy collaborating with others.</p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/priya-hariharan-2834271b7/" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-linkedin mr-2"></i>
-          </a>
-          <a href="https://github.com/phariharan818?tab=overview&from=2023-07-01&to=2023-07-31/" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github mr-2"></i>
-          </a>
-          <a href="https://drive.google.com/file/d/1_Iqg5rL5iGclxlzvS-MrRnfGXOStK_qt/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-file-alt fa-3x mr-2"></i>
-          </a>
-        </div>
-      </div>
-      <div class="container">
-        <img class="priya-pic" src="{{ url_for('static', filename='img/priya.jpg') }}" />
-      </div>
-    </div>
+<div id="about" class="mt-4 mr-2 ml-2 about-section">
+  <h1 class="about-title"><strong>About Me</strong></h1>
+  <hr class="custom-hr">
+  {% include "about.html" %}
+</div>
+<div id="projects">
+  <h1 class="about-title"><strong>Projects</strong></h1>
+  <hr class="custom-hr">
+  {% include "project.html" %}
+</div>
+<div id="work">
+  <h1 class="about-title"><strong>Work Experience</strong></h1>
+  <hr class="custom-hr">
+  {% include "work.html" %}
+</div>
+<div id="hobby">
+  <h1 class="about-title"><strong>Hobbies</strong></h1>
+  <hr class="custom-hr">
+  {% include "hobbies.html" %}
+</div>
+<div id="map-stuff">
+  <h1 class="about-title"><strong>Map</strong></h1>
+  <hr class="custom-hr">
+  <h1 class="map-title">So far, I have visited: </h1>
+  <div class="card-container">
+      <div class="mt-4" id="map"></div>
   </div>
 </div>
-<div class="pt-3 mr-2 ml-2 mb-3">
-  <div class="card about-container mx-auto">
-    <div class="about-me d-flex">
-      <div>
-        <h2 class="mb-3 p-3" style="text-align: center;">Programming Languages</h2>
-        <div class="programming-languages">
-          <i class="fab fa-java m-3" title="Java"></i>
-          <i class="fab fa-python m-3" title="Python"></i>
-          <i class="fab fa-html5 m-3" title="HTML"></i>
-          <i class="fab fa-css3-alt m-3" title="CSS"></i>
-          <i class="fab fa-react m-3" title="ReactJS"></i>
-          <i class="fab fa-js m-3" title="JavaScript"></i>
-          <i class="fab fa-r-project m-3" title="R"></i>
-          <i class="fas fa-database m-3" title="SQL"></i>
-          <i class="fab fa-git m-3" title="Git"></i>
-          <i class="fab fa-ajax m-3" title="Ajax"></i>
+<div id="contact">
+  <h1 class="about-title"><strong>Contact Me</strong></h1>
+  <hr class="custom-hr">
+  <p class="timeline-p text-center text-wrap">Feel free to ask post your questions here!</p>
+<div class="row mt-5 ml-3 mr-3">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Create Post</h5>
+                <p class="card-text">
+                    <form id="timeline-form" method="post" action="/timeline">
+                      <div class="timeline-form-inputs">
+                        <input class="card-text mt-4" type="text" name="name" placeholder="Name" style="border: 2px solid black"; required>
+                        <input class="card-text mt-4" type="email" name="email" placeholder="Email" style="border: 2px solid black"; required>
+                        <textarea class="card-text mt-4" name="content" placeholder="Content" style="border: 2px solid black"; required></textarea>
+                        <button type="submit">Create Post</button>
+                      </div>
+                    </form>
+                </p>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="col-sm-6">
+        {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{post.name}}</h5>
+                <p class="card-text">{{post.content}}</p>
+                <form action="/delete_post" method="post" class="d-inline">
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <button type="submit" class="btn btn-primary active">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+</div>
+
+
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const target = document.querySelector(this.getAttribute('href'));
+      const navbarHeight = document.querySelector('.nav-bar').offsetHeight;
+      const offset = target.offsetTop - navbarHeight + 10;
+
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+
+  var map = L.map("map").setView([37.8, -96], 4);
+
+    var tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+
+    L.geoJson(statesData).addTo(map);
+
+    function getColor(v) {
+      switch (v) {
+        case 1: // priya
+          return "#a2c999";
+      }
+    }
+    function getLabel(v) {
+      switch (v) {
+        case 1: // priya
+          return "Visited States";
+      }
+    }
+
+    function style(feature) {
+      return {
+        fillColor: getColor(feature.properties.visited),
+        weight: 1,
+        opacity: 0,
+        color: "white",
+        dashArray: "0",
+        fillOpacity: 0.75,
+      };
+    }
+
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+        weight: 5,
+        color: "#fff",
+        dashArray: "",
+        fillOpacity: 1,
+      });
+
+      layer.bringToFront();
+    }
+
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+    }
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature,
+      });
+    }
+
+    geojson = L.geoJson(statesData, {
+      style: style,
+      onEachFeature: onEachFeature,
+    }).addTo(map);
+
+    var info = L.control();
+
+    info.onAdd = function (map) {
+      this._div = L.DomUtil.create("div", "info");
+      this.update();
+      return this._div;
+    };
+
+    info.update = function (props) {
+      this._div.innerHTML = "<h4>Map of the United States</h4>";
+    };
+
+    info.addTo(map);
+
+    var legend = L.control({ position: "bottomright" });
+
+    legend.onAdd = function (map) {
+      var div = L.DomUtil.create("div", "info legend"),
+        grades = [1];
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          '<i style="background:' +
+          getColor(grades[i]) +
+          '"></i> ' +
+          getLabel(grades[i]) +
+          "<br>";
+      }
+      return div;
+    };
+
+    legend.addTo(map);
+</script>
 
 {% endblock %}

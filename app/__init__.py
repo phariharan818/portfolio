@@ -300,6 +300,7 @@ def get_time_line_post():
         ]
     }
 
+
 @app.route("/delete_post", methods=["POST"])
 def delete_post():
     post_id = request.form.get("post_id")
@@ -311,11 +312,11 @@ def delete_post():
 
     return redirect(url_for("timeline"))
 
-@app.route("/timeline", methods=["GET"])
+@app.route("/contact", methods=["GET"])
 def timeline():
     posts = [p for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
 
-    return render_template("timeline.html", title="Timeline", posts=posts, url=URL)
+    return render_template("index.html", title="Timeline", posts=posts, url=URL)
 
 @app.route("/<path:path>")
 def catch_all(path):

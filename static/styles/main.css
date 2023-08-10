@@ -7,18 +7,19 @@ h5,
 h6,
 button {
   font-family: 'Poppins', sans-serif;
-  font-weight: 100
+  font-weight: 100;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+
 body {
   background-color: #f5f5f9;
-  background-size: cover;
   width: auto;
   overflow-x: hidden;
+  overflow-y: scroll;
   font-family: "Roboto", serif;
   margin: 0px;
 }
@@ -27,11 +28,12 @@ body {
   font-family: 'Poppins', sans-serif;
   width: 100%;
   display: inline-block;
-  /* background-color: #1c539f; */
+  position: fixed;
   background-color: #212529;
   font-weight: 700 !important;
   padding-top: 10px;
   padding: 0.5em;
+  z-index: 2000;
 }
 
 .nav-content .logo-touch-target {
@@ -74,6 +76,12 @@ body {
   list-style-type: none;
   overflow: hidden;
   float: right;
+}
+
+.nav-items.navbar-nav-scroll {
+  max-height: var(--bs-scroll-height, 75vh);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .nav-bar li {
@@ -174,6 +182,46 @@ li a:hover {
 
 /* About Me */
 
+.about-text-container {
+  flex: 1;
+  padding: 0 20px;
+  margin-left: 3em;
+}
+
+.programming-languages-container {
+  flex: 1;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-left: 3px solid #ccc;
+  padding: 0.8em 0.8em;
+  margin-bottom: 1em;
+}
+
+.programming-languages-title {
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.programming-languages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.languages-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.skill {
+  margin-bottom: 2em;
+  font-size: 28px;
+}
+
 .about-container {
   padding: 3em;
   margin: 1em;
@@ -181,7 +229,6 @@ li a:hover {
   justify-content: center;
   align-items: center;
   border: 0;
-  max-width: 1000px;
 }
 
 .nav-center {
@@ -218,10 +265,14 @@ li a:hover {
   text-decoration: none;
 }
 
+.about-section:target {
+  margin-top: 1em;
+}
+
 .hello-text {
   font-size: 80px;
   text-align: center;
-  padding-top: 2.5em;
+  padding-top: 3em;
   animation: fadeInText 2s;
 }
 
@@ -237,15 +288,23 @@ li a:hover {
 .about-title {
   color: black;
   text-align: center;
+  margin-top: 2em;
   margin-bottom: 0.5em;
   font-size: 60px;
 }
 
+.custom-hr {
+  width: 10%;
+  height: 6px;
+  border: none;
+  background-color: #39275B;
+  border-radius: 5px;
+  margin-bottom: 3em;
+}
+
 .about-text {
-  width: 90%;
   text-align: left;
   font-size: 25px;
-  margin-left: 1em;
 }
 
 .about-me {
@@ -258,22 +317,21 @@ li a:hover {
 .priya-pic {
   max-width: 300px;
   max-height: 450px;
-  margin-left: 2em;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
+  margin-right: -3em;
+  border-radius: 50%;
 }
 
 .social-icons {
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-top: 1em;
-  margin-left: 1.3em;
 }
 
 .social-icons a {
   display: inline-block;
   margin-right: 10px;
-  margin-top: 3em;
+  margin-top: 2em;
   font-size: 24px;
 }
 
@@ -283,11 +341,22 @@ li a:hover {
 }
 
 .social-icons a:hover i {
-  color: #1d539f;
+  color: #39275B;
 }
 
 .programming-languages {
-  font-size: 35px;
+  font-size: 50px;
+  display: flex;
+}
+
+.skill {
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  font-size: 2rem;
+  background: rgba(153,153,153,.2);
+  border-radius: 2px;
+  font-weight: normal;
 }
 
 /* Projects */
@@ -297,8 +366,8 @@ li a:hover {
 }
 
 .card-project {
-  margin-top: 4em;
-  margin-left: 4em;
+  /* margin-top: 4em;
+  margin-left: 4em; */
   transition: transform 0.5s;
 }
 
@@ -318,7 +387,7 @@ li a:hover {
 .slideshow-container {
   max-width: 100%;
   position: relative;
-  margin: auto;
+  padding-top: 90px;
 }
 
 .slideshow-image {
@@ -367,13 +436,13 @@ li a:hover {
   color: #212529;
   text-decoration: none;
   text-align: center;
-  padding: 8px;
+  padding: 6px;
   transition: background-color 0.3s, color 0.3s;
   color: white;
 }
 
 .navigation-buttons .btn:hover {
-  color: #000;
+  color: white;
 }
 
 /* Work Experience */
@@ -390,6 +459,7 @@ li a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  overflow: hidden;
 }
 
 .accordian .card-header {
@@ -459,13 +529,17 @@ li a:hover {
 }
 
 .card-text-container {
-  max-height: 150px; /* Adjust the height as needed */
+  max-height: 150px;
   overflow: hidden;
 }
 
 
-
 /* Map */
+
+.map-container {
+  text-align: center;
+  margin-top: 2em;
+}
 
 .map-title {
   font-size: 40px;
@@ -481,7 +555,9 @@ li a:hover {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+
 }
+
 .info h4 {
   margin: 0 0 5px;
   color: #777;
@@ -491,6 +567,7 @@ li a:hover {
   line-height: 18px;
   color: #555;
 }
+
 .legend i {
   width: 18px;
   height: 18px;
