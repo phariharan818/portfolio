@@ -78,23 +78,8 @@
 </div>
 </div>
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      const target = document.querySelector(this.getAttribute('href'));
-      const navbarHeight = document.querySelector('.nav-bar').offsetHeight;
-      const offset = target.offsetTop - navbarHeight + 10;
-
-      window.scrollTo({
-        top: offset,
-        behavior: 'smooth'
-      });
-    });
-  });
 
 
   var map = L.map("map").setView([37.8, -96], 4);
