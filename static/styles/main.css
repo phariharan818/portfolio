@@ -46,6 +46,19 @@ body {
   height: 60px;
 }
 
+.my-button {
+  background-color: #212529;
+  color: white;
+  cursor: pointer;
+  font-size: 30px;
+  margin-left: 32px;
+  float: left;
+  line-height: 70px;
+  display: none;
+  border: none;
+  outline: none;
+}
+
 .nav-logo {
   padding: 1em;
   display: flex;
@@ -366,8 +379,6 @@ li a:hover {
 }
 
 .card-project {
-  /* margin-top: 4em;
-  margin-left: 4em; */
   transition: transform 0.5s;
 }
 
@@ -641,29 +652,175 @@ input.timeline-outline {
   padding: 10px;
 }
 
+
+.notification {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.notification-card {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: none;
+z-index: 1000;
+}
+
+.notification.show {
+  display: block;
+  animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.custom-modal-content {
+  background-color: #f8f9fa;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-modal-header {
+  background-color: #343a40;
+  color: #ffffff;
+  border-bottom: none;
+}
+
+.custom-modal-body {
+  padding: 20px;
+  text-align: center;
+  color: #343a40;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif; /* Add font-family */
+}
+
+.custom-input {
+  border-color: black;
+}
+
+
+
 /* Media Queries */
 
-@media (max-width: 768px) {
-  .nav-collect::before {
-    content: "\2630";
-    font-size: 24px;
-    cursor: pointer;
-    display: block;
-    margin-right: 15px;
-  }
-
-  .nav-items {
+@media (max-width: 600px) {
+  #mynav li {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    flex-direction: column;
     width: 100%;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    color: white;
+  }
+  
+  #mynav.show li {
+    display: flex;
+  }
+  
+  .my-button {
+    display: block;
+    border: none;
+    outline: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-me {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .nav-content.active .nav-items {
-    display: block; /* Show navigation items when menu is active */
+  .about-text {
+    font-size: 20px;
+  }
+
+  .about-title {
+    font-size: 50px;
+  }
+
+  .custom-hr {
+    margin-bottom: 0;
+  }
+
+  .about-text-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .programming-languages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .programming-languages .languages-row {
+    flex-direction: column;
+  }
+  
+  .social-icons {
+    justify-content: center;
+    margin-bottom: 2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .hello-text {
+    font-size: 50px;
+    /* margin-top: 3em; */
+  }
+
+  .hello-description {
+    font-size: 20px;
+    align-items: center;
+    margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+}
+
+@media (max-width: 768px) {
+  .sub-info {
+    font-size: 22px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn-work p {
+    /* display: none; */
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .smaller-screen {
+    margin-left: 2em;
+  }
+
+  .sub-info ul {
+    display: none;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #contact .card {
+    width: 100%;
+    /* padding: 25px; */
+    font-size: 19px;
   }
 }

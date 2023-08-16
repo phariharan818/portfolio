@@ -1,19 +1,31 @@
-
 <header class="nav-bar">
   <div class="nav-content">
-    <div class="nav-collect"></div>
-    <div class="nav-items navbar-nav-scroll">
-      <li><a href="/">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#work">Work Experience</a></li>
-      <li><a href="#hobby">Hobbies</a></li>
-      <li><a href="#map-stuff">Map</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <div class="nav-collect">
+      <button class="my-button" id="my-button">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+    <nav class="nav-items navbar-nav-scroll" id="mynav">
+      <ul>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#map-stuff">Map</a></li>
+        <li><a href="#hobby">Hobbies</a></li>
+        <li><a href="#work">Work Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
+<!-- Include FontAwesome library -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
+<script>
+  const button = document.getElementById("my-button");
+  const nav = document.getElementById("mynav");
 
-
-
+  button.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>

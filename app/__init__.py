@@ -1,10 +1,13 @@
 import os
 import datetime
 from flask import Flask, render_template, redirect, url_for, request
+from flask_wtf import FlaskForm
+import pandas as pd
 from dotenv import load_dotenv
 from peewee import *
 from markdown import markdown
 from playhouse.shortcuts import model_to_dict
+
 
 load_dotenv()
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
@@ -247,80 +250,53 @@ def work():
 def hobbies():
     return render_template("hobbies.html", title=NAMES, url=URL)
 
-@app.route("/api/timeline_post", methods=["POST"])
-def api_post_time_line_post():
-    errors = []
-    if (
-        "content" not in request.form
-        or "name" not in request.form
-        or "email" not in request.form
-    ):
-        if "content" not in request.form:
-            errors.append("Invalid content")
-        if "name" not in request.form:
-            errors.append("Invalid name")
-        if "email" not in request.form:
-            errors.append("Invalid email")
-        return {"errors": errors}, 400
-
-    name = request.form["name"]
-    email = request.form["email"]
-    content = request.form["content"]
-
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
-
-    return model_to_dict(timeline_post), 200
-
-@app.route("/timeline", methods=["POST"])
-def post_time_line_post():
-    print("Received POST request")
-    name = request.form.get("name")
-    email = request.form.get("email")
-    content = request.form.get("content")
-    print(f"Form Data - name: {name}, email: {email}, content: {content}")
-
-    if not all([name, email, content]):
-        print("Invalid form data")
-        return redirect(url_for("timeline"))
-    try:
-        timeline_post = TimelinePost.create(name=name, email=email, content=content)
-        print("Post created successfully:", timeline_post)
-    except Exception as e:
-        print("Error creating post:", e)
-
-    return redirect(url_for("timeline"))
-
-
-@app.route('/api/timeline_post', methods=['GET'])
-def get_time_line_post():
-    return {
-        'timeline_posts': [
-            model_to_dict(p)
-            for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
-        ]
-    }
-
-
-@app.route("/delete_post", methods=["POST"])
-def delete_post():
-    post_id = request.form.get("post_id")
-    try:
-        post = TimelinePost.get_by_id(post_id)
-        post.delete_instance()
-    except TimelinePost.DoesNotExist:
-        return {"error": "Post does not exist"}, 404
-
-    return redirect(url_for("timeline"))
-
 @app.route("/contact", methods=["GET"])
-def timeline():
-    posts = [p for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+def show_contact_form():
+    return render_template("contact.html", title="Contact Me")
 
-    return render_template("index.html", title="Timeline", posts=posts, url=URL)
+# @app.route("/contact", methods=["POST"])
+# def send_contact_message():
+#     name = request.form.get("name")
+#     email = request.form.get("email")
+#     message = request.form.get("message")
+
+#     return "Message sent successfully!"
+
+@app.route("/contact", methods=["POST"])
+def send_contact_message():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        recipient_email = request.form.get("recipient_email")
+
+        # Create an EmailMessage instance
+        msg = EmailMessage()
+        msg.set_content(f"From: {name}\nEmail: {email}\n\n{message}")
+        msg["Subject"] = "Contact Form Submission"
+        msg["From"] = os.getenv("EMAIL_ADDRESS")
+        msg["To"] = recipient_email
+
+        try:
+            with smtplib.SMTP("smtp.gmail.com", 587) as server:
+                server.starttls()
+                server.login(os.getenv("EMAIL_ADDRESS"), os.getenv("EMAIL_PASSWORD"))
+                server.send_message(msg)
+            return redirect(url_for("success"))
+        except Exception as e:
+            print("Error sending email:", e)
+            return redirect(url_for("error"))
+
+
+    # Redirect to the error route if the request method is not POST
+    return redirect(url_for("error"))
+
+
+
 
 @app.route("/<path:path>")
 def catch_all(path):
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
