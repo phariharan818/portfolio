@@ -270,7 +270,6 @@ def send_contact_message():
         message = request.form.get("message")
         recipient_email = request.form.get("recipient_email")
 
-        # Create an EmailMessage instance
         msg = EmailMessage()
         msg.set_content(f"From: {name}\nEmail: {email}\n\n{message}")
         msg["Subject"] = "Contact Form Submission"
@@ -287,11 +286,7 @@ def send_contact_message():
             print("Error sending email:", e)
             return redirect(url_for("error"))
 
-
-    # Redirect to the error route if the request method is not POST
     return redirect(url_for("error"))
-
-
 
 
 @app.route("/<path:path>")
