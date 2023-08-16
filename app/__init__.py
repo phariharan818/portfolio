@@ -2,7 +2,6 @@ import os
 import datetime
 from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import FlaskForm
-import pandas as pd
 from dotenv import load_dotenv
 from peewee import *
 from markdown import markdown
