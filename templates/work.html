@@ -1,84 +1,68 @@
-{% extends "template.html" %}
-{% block content %}
-<div id="accordion work">
+{% extends "template.html" %} {% block content %}
+
+<div id="accordion">
   <div class="card card-work mt-4 ml-5 mr-5">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-work" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+        <button class="btn btn-work font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
           aria-controls="collapseOne">
-          <div class="sub-info">
-            <strong>Production Engineering Fellow</strong>
-            <ul>June 2023 - Present</ul>
-          </div>
-          <p class="smaller-screen">Major League Hacking</p>
+          MLH Production Engineering Fellow
         </button>
       </h5>
     </div>
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordion work">
-      <div class="card-body markdown-content" style="font-size: 20px;">
-        <ul>
-          <li>Engaged in a curriculum-based learning approach that covered Production Engineering topics and participated
-            in workshops led by industry professionals</li>
-          <li>Created an open-source web application using Flask, Jinja, HTML, CSS, MySQL, and Docker</li>
-          <li>Implemented database testing and used automated workflows to execute the tests</li>
-          <li>Received mentorship from Meta engineers about Production Engineering and observed them live coding bash
-            scripts and Python programs</li>
-        </ul>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body" style="font-size: 20px;">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+        officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+        butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+        haven't heard of them accusamus labore sustainable VHS.
       </div>
     </div>
   </div>
   <div class="card mt-4 ml-5 mr-5">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
-        <button class="btn collapsed btn-work" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-          aria-expanded="false" aria-controls="collapseTwo">
-          <div class="sub-info">
-            <strong>Backend Engineering Intern</strong>
-            <ul>May 2022 - May 2023</ul>
-          </div>
-          <p>Data Analysis and Intelligent Systems (DAIS) Group</p>
+        <button class="btn collapsed btn-work font-weight-bold" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+          aria-controls="collapseTwo">
+          Work Experience #2
         </button>
       </h5>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion work">
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body" style="font-size: 20px;">
-        <ul>
-          <li>Developed a solution for a token authentication email API issue by engineering test cases to ensure that
-            token was being renewed periodically</li>
-          <li>Evaluating the macromolecular pipeline code on GitHub and re-designing the pre and post processing elements
-            to make predictions of nucleic acids 80% more accurate</li>
-          <li>Working on Alpha Fold implementation by comparing ColabFold’s relaxed and unrelaxed models with
-            DeepTracer’s prediction in Pymol cealign software to compare structural compatibility</li>
-          <li>Calculating RMSD values of predicted protein structures and determining the anchor points from where amino
-            acids chains aligned well in order to slice models</li>
-        </ul>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+        officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+        butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+        haven't heard of them accusamus labore sustainable VHS.
       </div>
     </div>
   </div>
   <div class="card mt-4 ml-5 mr-5">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
-        <button class="btn collapsed btn-work" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-          aria-expanded="false" aria-controls="collapseThree">
-          <div class="sub-info">
-            <strong class="smaller-screen">Research Assistant</strong>
-            <ul>Sept. 2021 - June 2022</ul>
-          </div>
-          <p>Social Policy and Identity Research (SPIR) Lab</p>
+        <button class="btn collapsed btn-work font-weight-bold" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+          aria-controls="collapseThree">
+          Work Experience #3
         </button>
       </h5>
     </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion work">
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body" style="font-size: 20px;">
-        <ul>
-          <li>Designed a program to catalogue words by count in different DEI statements using Python and sorting them
-            into different categories to determine the type of language being utilized</li>
-          <li>Reviewed scholarly articles and drafted experimental ideas to test the validity of claims made</li>
-          <li>Edited scientific papers and supplemented them with evidence of new studies and additional data related
-            to the topic</li>
-        </ul>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+        officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+        butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+        haven't heard of them accusamus labore sustainable VHS.
       </div>
     </div>
   </div>
+  <!-- <img src="{{ url_for('static', filename='img/priya-resume.png') }}" alt="My Resume"> -->
 </div>
+
 {% endblock %}

@@ -1,12 +1,10 @@
 import os
 import datetime
 from flask import Flask, render_template, redirect, url_for, request
-from flask_wtf import FlaskForm
 from dotenv import load_dotenv
 from peewee import *
 from markdown import markdown
 from playhouse.shortcuts import model_to_dict
-
 
 load_dotenv()
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
@@ -135,7 +133,7 @@ def project_details(project_id):
             "img/chart4.png",
         ],
         "fd_title": "Research Questions:",
-        "fd_description": "**Question 1: Is colorism present in the modeling industry? Does Vogue prefer lighter skin color models compared to darker skin-colored models on their magazine covers?**\n\n &ensp;&ensp;&ensp;-To some extent, we believe that colorism is still present in the modeling industry seeing as there is a trend for Vogue using lighter-skinned models.\n\n**Question 2: How has time changed the preference for skin color in the modeling industry? What is the preference for the skin color of the Vogue magazine models over time? When did this change begin happening?** \n\n &ensp;&ensp;-Our graph depicts more lighter-colored models being used overall, especially in the years 2004 and 2013.\n\n**Question 3: Is the modeling industry diverse, or do they just seem that way?**\n\n &ensp;&ensp;-Many organizations have issues with using diversity as a tool for their own success. If the modeling industry is the same way, that could give us a lot of insight into what their true motivations are and whether it is ethical or not. By knowing whether diversity is used instrumentally, we can see how people of color are impacted.",
+        "fd_description": "**Question 1:** Is colorism present in the modeling industry? Does Vogue prefer lighter skin color models compared to darker skin-colored models on their magazine covers? \n\n- To some extent, we believe that colorism is still present in the modeling industry seeing as there is a trend for Vogue using lighter-skinned models.\n\n**Question 2:** How has time changed the preference for skin color in the modeling industry? What is the preference for the skin color of the Vogue magazine models over time? When did this change begin happening?\n\n- Our graph depicts more lighter-colored models being used overall, especially in the years 2004 and 2013.\n\n**Question 3:** Is the modeling industry diverse, or do they just seem that way?\n\n- Many organizations have issues with using diversity as a tool for their own success. If the modeling industry is the same way, that could give us a lot of insight into what their true motivations are and whether it is ethical or not. By knowing whether diversity is used instrumentally, we can see how people of color are impacted.",
         "code_title": "Coding Snippets:",
         "code_description": "To begin, we had to clean our data to ensure that both the datasets we were using could be merged so that a comparison could be made. Once this was done, we isolated the different values within the dataset, such as the lightness values and the number of covers. Another factor that went into our analysis was plotting by year and month, which meant we needed to create a separate method that held these values.",
         "github_description": "This link has all the code for the graphs: ",
@@ -249,48 +247,79 @@ def work():
 def hobbies():
     return render_template("hobbies.html", title=NAMES, url=URL)
 
-@app.route("/contact", methods=["GET"])
-def show_contact_form():
-    return render_template("contact.html", title="Contact Me")
+@app.route("/api/timeline_post", methods=["POST"])
+def api_post_time_line_post():
+    errors = []
+    if (
+        "content" not in request.form
+        or "name" not in request.form
+        or "email" not in request.form
+    ):
+        if "content" not in request.form:
+            errors.append("Invalid content")
+        if "name" not in request.form:
+            errors.append("Invalid name")
+        if "email" not in request.form:
+            errors.append("Invalid email")
+        return {"errors": errors}, 400
 
-# @app.route("/contact", methods=["POST"])
-# def send_contact_message():
-#     name = request.form.get("name")
-#     email = request.form.get("email")
-#     message = request.form.get("message")
+    name = request.form["name"]
+    email = request.form["email"]
+    content = request.form["content"]
 
-#     return "Message sent successfully!"
+    timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
-@app.route("/contact", methods=["POST"])
-def send_contact_message():
-    if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        message = request.form.get("message")
-        recipient_email = request.form.get("recipient_email")
+    return model_to_dict(timeline_post), 200
 
-        msg = EmailMessage()
-        msg.set_content(f"From: {name}\nEmail: {email}\n\n{message}")
-        msg["Subject"] = "Contact Form Submission"
-        msg["From"] = os.getenv("EMAIL_ADDRESS")
-        msg["To"] = recipient_email
+@app.route("/timeline", methods=["POST"])
+def post_time_line_post():
+    print("Received POST request")
+    name = request.form.get("name")
+    email = request.form.get("email")
+    content = request.form.get("content")
+    print(f"Form Data - name: {name}, email: {email}, content: {content}")
 
-        try:
-            with smtplib.SMTP("smtp.gmail.com", 587) as server:
-                server.starttls()
-                server.login(os.getenv("EMAIL_ADDRESS"), os.getenv("EMAIL_PASSWORD"))
-                server.send_message(msg)
-            return redirect(url_for("success"))
-        except Exception as e:
-            print("Error sending email:", e)
-            return redirect(url_for("error"))
+    if not all([name, email, content]):
+        print("Invalid form data")
+        return redirect(url_for("timeline"))
+    try:
+        timeline_post = TimelinePost.create(name=name, email=email, content=content)
+        print("Post created successfully:", timeline_post)
+    except Exception as e:
+        print("Error creating post:", e)
 
-    return redirect(url_for("error"))
+    return redirect(url_for("timeline"))
 
+
+@app.route('/api/timeline_post', methods=['GET'])
+def get_time_line_post():
+    return {
+        'timeline_posts': [
+            model_to_dict(p)
+            for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
+        ]
+    }
+
+@app.route("/delete_post", methods=["POST"])
+def delete_post():
+    post_id = request.form.get("post_id")
+    try:
+        post = TimelinePost.get_by_id(post_id)
+        post.delete_instance()
+    except TimelinePost.DoesNotExist:
+        return {"error": "Post does not exist"}, 404
+
+    return redirect(url_for("timeline"))
+
+@app.route("/timeline", methods=["GET"])
+def timeline():
+    posts = [p for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+
+    return render_template("timeline.html", title="Timeline", posts=posts, url=URL)
 
 @app.route("/<path:path>")
 def catch_all(path):
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
