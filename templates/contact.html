@@ -1,0 +1,110 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+
+<!-- <h2 class="timeline-heading text-center mt-5"><strong>Timeline Posts</strong></h2> -->
+<!-- <p class="timeline-p text-center text-wrap">Feel free to ask post your questions here!</p>
+<div class="row mt-5 ml-3 mr-3">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Create Post</h5>
+                <p class="card-text">
+                    <form id="timeline-form" method="post" action="/timeline">
+                      <div class="timeline-form-inputs">
+                        <input class="card-text mt-4" type="text" name="name" placeholder="Name" style="border: 2px solid black"; required>
+                        <input class="card-text mt-4" type="email" name="email" placeholder="Email" style="border: 2px solid black"; required>
+                        <textarea class="card-text mt-4" name="content" placeholder="Content" style="border: 2px solid black"; required></textarea>
+                        <button type="submit">Create Post</button>
+                      </div>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{post.name}}</h5>
+                <p class="card-text">{{post.content}}</p>
+                <form action="/delete_post" method="post" class="d-inline">
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <button type="submit" class="btn btn-primary active">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div> -->
+
+<div class="container">
+    <h2 class="text-center mt-5"><strong>Contact Me</strong></h2>
+    <div class="row mt-5 ml-3 mr-3">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Get in Touch</h3>
+                    <p class="card-text">
+                        <form id="contact-form" method="post" action="/contact">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Send Message</button>
+                        </form>
+                        <div id="notification" class="notification"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const contactForm = document.getElementById("contact-form");
+      const notification = document.getElementById("notification");
+    
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+    
+        // Get form data
+        const formData = new FormData(contactForm);
+    
+        // Perform AJAX POST request
+        fetch("/contact", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            // Show notification
+            notification.textContent = "Message sent successfully!";
+            notification.classList.add("show");
+    
+            // Clear form
+            contactForm.reset();
+    
+            // Hide notification after a delay
+            setTimeout(function () {
+              notification.classList.remove("show");
+              notification.textContent = "";
+            }, 3000);
+          })
+          .catch((error) => {
+            console.error("Error sending message:", error);
+          });
+      });
+    });
+    </script>
+
+
+{% endblock %}
+

@@ -2,17 +2,18 @@
 
 {% block content %}
 
-<div class="container mt-5">
+
+<div class="container">
     <div class="slideshow-container">
         {% for image_url in project.image_urls %}
         <img src="{{ url_for('static', filename=image_url) }}" class="slideshow-image img-fluid rounded mb-3"
             alt="Project Image">
         {% endfor %}
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <a class="prev" onclick="plusSlides(-1)"style="color: white;">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)" style="color: white;">&#10095;</a>
     </div>
-    <div class="card mt-4 mb-4">
-        <h4 class="text-center">{{ project.title }}</h4>
+    <div class="card mt-4 mb-4" style="font-size: 19px;">
+        <h3 class="text-center"><strong>{{ project.title }}</strong></h3>
         <p>{{ project.description | markdown | safe }}</p>
     </div>
     <div class="container">
@@ -45,8 +46,8 @@
         </div>
         {% endif %}
     </div>
-    <div class="card mt-4 mb-4">
-        <h4 class="text-center">{{ project.fd_title }}</h4>
+    <div class="card mt-4 mb-4" style="font-size: 19px;">
+        <h3 class="text-center"><strong>{{ project.fd_title }}</strong></h3>
         <p>{{ project.fd_description | markdown | safe }}</p>
     </div>
     <div class="container">
@@ -68,8 +69,8 @@
         </div>
         {% endif %}
     </div>
-    <div class="card mt-4 mb-4">
-        <h4 class="text-center">{{ project.code_title }}</h4>
+    <div class="card mt-4 mb-4" style="font-size: 19px;">
+        <h3 class="text-center mb-4"><strong>{{ project.code_title }}</strong></h3>
         <p>{{ project.code_description }} </p>
         <p>{{ project.github_description }}<a href="{{ project.code_link }}" class="text-center" target="_blank">Project
                 Link</a></p>
@@ -107,19 +108,22 @@
         </div>
         {% endif %}
     </div>        
-    <div class="text-center mt-4 mb-4">
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <span>
-                <h4>Visit the site!</h4>
-            </span>
-            <div class="ml-4 mb-2">
-                <a href="{{ project.website_url }}" target="_blank" class="btn btn-dark">Website Link</a>
-            </div>
+</div>
+
+    
+<div class="navigation-buttons justify-content-between">
+    <a href="{{ url_for('project_details', project_id=project_id - 1) }}" class="btn btn-secondary mr-2">Previous Project</a>
+    <div style="display: flex; align-items: center; justify-content: center;">
+            <h4>Visit the site!</h4>
+        <div class="ml-4 mb-2">
+            <a href="{{ project.website_url }}" target="_blank" class="btn btn-dark">Website Link</a>
         </div>
     </div>
+    <a href="{{ url_for('project_details', project_id=project_id + 1) }}" class="btn btn-secondary">Next Project</a>
 </div>
 
 <script>
+
     let slideIndex = 1;
     showSlides(slideIndex);
 
